@@ -1,0 +1,25 @@
+const {chromium} = require('playwright');
+const assert = require('node:assert/strict');
+(async () => {
+  const browser = await chromium.launch({headless:true, executablePath:'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'});
+  const page = await browser.newPage({viewport:{width:390,height:844}});
+  const code = 'a'.repeat(32);
+  await page.goto(`http://127.0.0.1:4173/?agent=${code}`);
+  const owner = page.locator('.persona').nth(2);
+  assert((await owner.getAttribute('href')).includes(code));
+  assert(!(await page.locator('.persona').first().getAttribute('href')).includes('agent='));
+  await owner.click();
+  await page.waitForFunction(() => document.querySelector('.qr-panel img').src.startsWith('data:image/png'));
+  assert((await page.locator('.qr-panel a').getAttribute('href')).includes(code));
+  await page.screenshot({path:'artifacts/agent-owner-card.png',fullPage:true});
+  await page.locator('.qr-panel img').screenshot({path:'artifacts/agent-qr.png'});
+  await page.getByText('See full benefits',{exact:true}).click();
+  const next = page.getByText('Save my business referral',{exact:true});
+  assert((await next.getAttribute('href')).includes(`agent=${code}`));
+  await next.click();
+  await page.waitForFunction(() => document.querySelector('#title').textContent === 'Save your referral');
+  assert.equal(await page.locator('#login').isVisible(),true);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),false);
+  console.log('PASS agent retained through owner QR, benefits, and account step; free card remains unattributed');
+  await browser.close();
+})().catch((error) => {console.error(error);process.exit(1);});

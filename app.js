@@ -177,6 +177,13 @@ const PERSONAS = {
 };
 
 const qs = (selector) => document.querySelector(selector);
+const agentCode = new URLSearchParams(location.search).get('agent');
+const validAgentCode = /^[a-f0-9]{32}$/.test(agentCode || '') ? agentCode : null;
+const withAgent = (url) => {
+  const target = new URL(url, location.href);
+  if (validAgentCode) target.searchParams.set('agent', validAgentCode);
+  return target.href;
+};
 
 function brand(relative = "") {
   return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="What’s Out icon"><span><b>What’s Out</b><span>Human first systems · AI-level results</span></span></a>`;
@@ -188,7 +195,7 @@ function footer() {
 
 function renderChooser() {
   const cards = Object.entries(PERSONAS).map(([id, p]) => `
-    <a class="persona" href="card/${id}/" aria-label="Show the ${p.label} QR presentation">
+    <a class="persona" href="${id === 'business-owner' ? withAgent(`card/${id}/`) : `card/${id}/`}" aria-label="Show the ${p.label} QR presentation">
       <span class="icon" aria-hidden="true">${p.icon}</span>
       <small>${p.number} · Persona BizCard</small>
       <h2>${p.label}</h2>
@@ -204,6 +211,7 @@ function renderChooser() {
     </section>
     <p class="menu-label">Choose the person in front of you</p>
     <nav class="persona-grid" aria-label="Choose a customer persona">${cards}</nav>
+    <p><a href="agent/">Sales agents: sign in to get your personal card →</a></p>
     ${footer()}
   </div>`;
 }
@@ -211,8 +219,9 @@ function renderChooser() {
 function renderCard(id) {
   const p = PERSONAS[id];
   if (!p) return renderNotFound();
+  const destination = id === 'business-owner' ? withAgent(p.destination) : p.destination;
   qs("#app").innerHTML = `<div class="card-shell" style="--accent:${p.accent}">
-    <a class="back" href="../../">← Choose another persona</a>
+    <a class="back" href="${withAgent('../../')}">← Choose another persona</a>
     <article class="sales-card">
       <section>
         <div class="eyebrow">${p.number} · What’s Out for</div>
@@ -220,20 +229,38 @@ function renderCard(id) {
         <p class="pitch">${p.outcome}</p>
         <ul class="quick-benefits">${p.quick.map((item) => `<li>${item}</li>`).join("")}</ul>
         <div class="card-tools">
-          <a class="button primary" href="../../benefits/${id}/">See full benefits</a>
-          <button class="button" type="button" data-copy="${p.destination}">Copy QR link</button>
+          <a class="button primary" href="${id === 'business-owner' ? withAgent(`../../benefits/${id}/`) : `../../benefits/${id}/`}">See full benefits</a>
+          <button class="button" type="button" data-copy="${destination}">Copy QR link</button>
         </div>
         <p class="proofline">Built by Eddy Davila · Bitter Softworks</p>
       </section>
       <section class="qr-panel" aria-label="Scannable QR code">
         <img src="${p.qr}" alt="QR code for ${p.label}">
         <h2>${p.qrAction}</h2>
-        <p>${p.destination}</p>
-        <a href="${p.destination}" target="_blank" rel="noopener">Open link</a>
+        <p>${destination}</p>
+        <a href="${destination}" target="_blank" rel="noopener">Open link</a>
       </section>
     </article>
   </div>`;
   bindCopy();
+  if (id === 'business-owner' && validAgentCode) {
+    const script = document.createElement('script');
+    script.src = '../../vendor/qr-creator.min.js';
+    script.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = 660;
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#fff'; context.fillRect(0, 0, 660, 660);
+      const inner = document.createElement('canvas');
+      QrCreator.render({text: destination, radius: 0, ecLevel: 'M', size: 540,
+        fill: '#050718', background: '#fff'}, inner);
+      context.drawImage(inner, 60, 60);
+      qs('.qr-panel img').src = canvas.toDataURL('image/png');
+      qs('.qr-panel img').hidden = false;
+    };
+    qs('.qr-panel img').hidden = true;
+    document.head.appendChild(script);
+  }
 }
 
 function renderBenefits(id) {
@@ -246,13 +273,14 @@ function renderBenefits(id) {
     </section>`).join("");
 
   qs("#app").innerHTML = `<div class="benefit-shell" style="--accent:${p.accent}">
-    <header class="topbar"><a class="back" href="../../card/${id}/">← Back to QR card</a><div class="ownerline">What’s Out · ${p.label}</div></header>
+    <header class="topbar"><a class="back" href="${id === 'business-owner' ? withAgent(`../../card/${id}/`) : `../../card/${id}/`}">← Back to QR card</a><div class="ownerline">What’s Out · ${p.label}</div></header>
     <section class="benefit-hero">
       <div class="eyebrow">A complete, evidence-backed view</div>
       <h1>What <span class="label">${p.label}</span> gets</h1>
       <p class="lede">${p.outcome}</p>
       <div class="hero-actions"><a class="button primary" href="${SITE.webApp}" target="_blank" rel="noopener">${p.cta}</a><a class="button" href="mailto:${SITE.email}?subject=What%27s%20Out%20${encodeURIComponent(p.label)}">Ask Bitter Softworks</a></div>
     </section>
+    ${id === 'business-owner' && validAgentCode ? `<section class="notes"><h2>Keep your agent connected</h2><p>Sign in with your What’s Out account to save this business referral. Use that same account for your business subscription on Android. Scanning alone does not save it. Your original saved agent remains attached; this applies only to business subscriptions.</p><a class="button primary" href="${withAgent('../../agent/?mode=customer')}">Save my business referral</a></section>` : ''}
     ${sections}
     <aside class="notes"><h2>Clear expectations</h2><ul>${p.notes.map((note) => `<li>${note}</li>`).join("")}</ul></aside>
     <section class="contact"><h2>Ready to talk?</h2><p>Contact Eddy Davila, founder and owner of Bitter Softworks, for a What’s Out walkthrough.</p><p><a href="mailto:${SITE.email}">${SITE.email}</a> · <a href="tel:${SITE.phoneHref}">${SITE.phoneDisplay}</a></p></section>
