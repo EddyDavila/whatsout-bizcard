@@ -1,0 +1,29 @@
+{
+  "product": "What's Out",
+  "auditedAt": "2026-09-22",
+  "sourceProject": "C:/Users/OldSk/AndroidStudioProjects/whatsout",
+  "statusKey": {
+    "available": "Supported by current code and handoff evidence.",
+    "conditional": "Requires entitlement, approval, data, device, or service conditions.",
+    "release-gated": "Implemented but not marketed as universal until production validation is complete."
+  },
+  "claims": [
+    {"persona":"free","capability":"Physical-location map and category search","status":"available","evidence":["lib/MapScreen.dart","lib/city_search_policy.dart","test/city_search_policy_test.dart"],"limits":"Standard radius is 5 km; availability and load time vary."},
+    {"persona":"free","capability":"Rewarded 10 km category expansion","status":"conditional","evidence":["lib/city_search_policy.dart","test/city_search_policy_test.dart","docs/AgentHandoff/REPORT.md"],"limits":"Requires an eligible rewarded flow."},
+    {"persona":"free","capability":"Closest-party in-app prompt","status":"available","evidence":["lib/MapScreen.dart"],"limits":"Calculated from loaded results; not a background push notification."},
+    {"persona":"free","capability":"Event Mode by selected date","status":"available","evidence":["lib/MapScreen.dart"],"limits":"Displayed events depend on current data and release configuration."},
+    {"persona":"free","capability":"Free radio and rewarded continued listening","status":"conditional","evidence":["lib/AudioController.dart","docs/FREE_TIER_MONETIZATION_BLUEPRINT_2026-09-11.md"],"limits":"Current UI exposes three songs before the supported rewarded path."},
+    {"persona":"free","capability":"Road route on the existing map","status":"release-gated","evidence":["docs/AgentHandoff/CURRENT_STATE.md","docs/AgentHandoff/REPORT.md"],"limits":"A Play-installed free-user production reward validation remains pending."},
+    {"persona":"free","capability":"Imported public-event reward unlock","status":"release-gated","evidence":["docs/AgentHandoff/CURRENT_STATE.md","docs/AgentHandoff/REPORT.md"],"limits":"Production discovery is disabled by default in the latest handoff state."},
+    {"persona":"user-plus","capability":"Explore 132 supported cities","status":"available","evidence":["docs/CITY_MODE_DUAL_SOURCE_REPAIR_TRACKER_2026-09-20.md","docs/FULL_CITY_PACKAGE_PRODUCT_PLAN_2026-09-20.md"],"limits":"Choose a category and start the search after selecting a city."},
+    {"persona":"user-plus","capability":"Map results list view","status":"available","evidence":["docs/RECALL_CHAT_2026-09-22.md","lib/MapScreen.dart"],"limits":"Represents the currently loaded map result set."},
+    {"persona":"user-plus","capability":"Social profile, posts, likes, comments, and Lounge","status":"available","evidence":["docs/FREE_TIER_MONETIZATION_BLUEPRINT_2026-09-11.md","lib"],"limits":"Requires an active eligible account and current service availability."},
+    {"persona":"user-plus","capability":"VIP inbox and push notifications","status":"conditional","evidence":["functions/index.js","docs/FREE_TIER_MONETIZATION_BLUEPRINT_2026-09-11.md"],"limits":"Requires an eligible invitation and supported notification delivery."},
+    {"persona":"user-plus","capability":"Google Play membership with restore","status":"conditional","evidence":["lib","functions","docs/FREE_TIER_MONETIZATION_BLUEPRINT_2026-09-11.md"],"limits":"Requires a supported Android market and verified active purchase."},
+    {"persona":"business-owner","capability":"Register or claim a business","status":"conditional","evidence":["lib/BusinessRegistrationScreen.dart","lib/BusinessDashBoard.dart"],"limits":"Truthful submission and approval are required before visibility."},
+    {"persona":"business-owner","capability":"Draft, publish, share, edit, and expire events","status":"conditional","evidence":["lib/BusinessDashBoard.dart","functions/index.js"],"limits":"Publication requires a valid business product, event pass, or supported verified credit."},
+    {"persona":"business-owner","capability":"VIP invitation workflow","status":"conditional","evidence":["lib/BusinessDashBoard.dart","functions/index.js"],"limits":"Up to 20 identifiers per request, subject to eligibility and rate limits."},
+    {"persona":"business-owner","capability":"QR admission scanner with VIP or regular entry","status":"conditional","evidence":["lib/BusinessDashBoard.dart","functions/index.js"],"limits":"Requires an authorized owner/event context and valid invitation."},
+    {"persona":"business-owner","capability":"Business plans and one-event purchase option","status":"conditional","evidence":["lib","functions"],"limits":"Products, regional prices, taxes, and availability follow current Google Play configuration."}
+  ]
+}

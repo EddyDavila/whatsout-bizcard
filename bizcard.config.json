@@ -1,0 +1,16 @@
+{
+  "appName": "What's Out",
+  "publisher": "Bitter Softworks",
+  "creator": "Eddy Davila",
+  "publicBaseUrl": "https://eddydavila.github.io/whatsout-bizcard/",
+  "webAppUrl": "https://whatsout-fcc29.web.app/",
+  "contact": {
+    "email": "bittersoftworks@gmail.com",
+    "phone": "+1-201-491-8531"
+  },
+  "personas": [
+    {"id":"free","label":"Free User","destination":"https://whatsout-fcc29.web.app/"},
+    {"id":"user-plus","label":"User+","destination":"https://eddydavila.github.io/whatsout-bizcard/benefits/user-plus/"},
+    {"id":"business-owner","label":"Business Owner","destination":"https://eddydavila.github.io/whatsout-bizcard/benefits/business-owner/"}
+  ]
+}
