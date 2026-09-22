@@ -16,7 +16,7 @@ const PERSONAS = {
     label: "Free User",
     cardTitle: "Find what’s out.",
     outcome: "A fast way to discover nearby places and decide where to go next—without paying to begin.",
-    qr: "../../assets/qr-free.svg",
+    qr: "../../assets/qr-free.png",
     destination: SITE.webApp,
     qrAction: "Scan to open the free web app",
     quick: [
@@ -63,7 +63,7 @@ const PERSONAS = {
     label: "User+",
     cardTitle: "Go beyond nearby.",
     outcome: "Explore more cities, participate socially, receive VIP invitations, and remove common free-tier limits.",
-    qr: "../../assets/qr-user-plus.svg",
+    qr: "../../assets/qr-user-plus.png",
     destination: "https://eddydavila.github.io/whatsout-bizcard/benefits/user-plus/",
     qrAction: "Scan to see every User+ benefit",
     quick: [
@@ -117,7 +117,7 @@ const PERSONAS = {
     label: "Business Owner",
     cardTitle: "Turn discovery into visits.",
     outcome: "Build an approved business presence, publish events, invite qualified guests, and operate admission from one system.",
-    qr: "../../assets/qr-business-owner.svg",
+    qr: "../../assets/qr-business-owner.png",
     destination: "https://eddydavila.github.io/whatsout-bizcard/benefits/business-owner/",
     qrAction: "Scan to see every owner benefit",
     quick: [
