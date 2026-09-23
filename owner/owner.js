@@ -1,4 +1,5 @@
 import {auth,db,call,message,connect} from '../web-account.js';
+import '../help-link.js';
 import {collection,query,orderBy,limit,getDocs} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 const desk=document.querySelector('#desk');
 const panel=document.querySelector('#share-panel');

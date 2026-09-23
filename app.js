@@ -7,6 +7,7 @@ const SITE = {
   creator: "Eddy Davila",
   verified: "September 22, 2026",
 };
+import(new URL('help-link.js', document.currentScript.src).href);
 
 const PERSONAS = {
   free: {

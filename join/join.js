@@ -1,4 +1,5 @@
 import {auth,call,message,connect} from '../web-account.js';
+import '../help-link.js';
 import {createUserWithEmailAndPassword,sendEmailVerification,reload,getIdToken} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 const input=document.querySelector('#invite-code');
 const incoming=new URLSearchParams(location.hash.slice(1)).get('invite');

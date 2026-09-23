@@ -1,0 +1,11 @@
+const scriptBase=new URL('.',import.meta.url);
+const route=location.pathname;
+let topic='present';
+if(route.includes('/owner/'))topic='invite';
+else if(route.includes('/join/'))topic='accept';
+else if(route.includes('/agent/'))topic=new URLSearchParams(location.search).get('mode')==='customer'?'customer':'present';
+else if(route.includes('/benefits/business-owner/'))topic='customer';
+const bar=document.createElement('nav');bar.className='help-access';bar.setAttribute('aria-label','Instructions');
+const link=document.createElement('a');link.href=new URL(`help/guide.html?topic=${topic}`,scriptBase).href;link.target='_blank';link.rel='noopener';link.textContent='Need help with this step? ↗';
+const all=document.createElement('a');all.href=new URL('help/',scriptBase).href;all.target='_blank';all.rel='noopener';all.textContent='All how-to guides ↗';
+bar.append(link,all);document.body.prepend(bar);
