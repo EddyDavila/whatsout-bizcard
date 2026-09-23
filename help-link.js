@@ -8,4 +8,8 @@ else if(route.includes('/benefits/business-owner/'))topic='customer';
 const bar=document.createElement('nav');bar.className='help-access';bar.setAttribute('aria-label','Instructions');
 const link=document.createElement('a');link.href=new URL(`help/guide.html?topic=${topic}`,scriptBase).href;link.target='_blank';link.rel='noopener';link.textContent='Need help with this step? ↗';
 const all=document.createElement('a');all.href=new URL('help/',scriptBase).href;all.target='_blank';all.rel='noopener';all.textContent='All how-to guides ↗';
-bar.append(link,all);document.body.prepend(bar);
+bar.append(link,all);
+if(!route.includes('/benefits/')&&!route.includes('/card/')&&new URLSearchParams(location.search).get('mode')!=='customer'){
+ const training=document.createElement('a');training.href=new URL('training/',scriptBase).href;training.textContent='Agent welcome training';bar.append(training);
+}
+document.body.prepend(bar);
