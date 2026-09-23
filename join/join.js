@@ -54,7 +54,7 @@ document.querySelector('#activate').onclick=async()=>{
     await call('claimSalesInvite',{inviteCode:input.value.trim()});
     sessionStorage.removeItem('whatsout-invitation');input.value='';
     document.querySelector('#accept').hidden=true;document.querySelector('#ready').hidden=false;
-    message('Welcome to the What’s Out sales team. Your personal BizCard is ready to generate.');
+    message('Welcome to the What’s Out sales team. Your personal StepOut card is ready to generate.');
   }catch(error){message(error.message||'The invitation could not be accepted.');
     if((error.message||'').includes('Complete your user profile')){document.querySelector('#signup').hidden=false;document.querySelector('#register').textContent='Finish profile setup';}
   }

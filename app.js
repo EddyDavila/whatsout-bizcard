@@ -187,18 +187,18 @@ const withAgent = (url) => {
 };
 
 function brand(relative = "") {
-  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="What’s Out icon"><span><b>What’s Out</b><span>Human first systems · AI-level results</span></span></a>`;
+  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="What’s Out icon"><span><b>StepOut</b><span>The agent workspace by What’s Out</span></span></a>`;
 }
 
 function footer() {
-  return `<footer class="footer"><span>© 2026 ${SITE.publisher}. What’s Out is created by ${SITE.creator}.</span><span>Benefits audited ${SITE.verified}.</span></footer>`;
+  return `<footer class="footer"><span>StepOut by What’s Out · © 2026 ${SITE.publisher}. Created by ${SITE.creator}.</span><span>Benefits audited ${SITE.verified}.</span></footer>`;
 }
 
 function renderChooser() {
   const cards = Object.entries(PERSONAS).map(([id, p]) => `
     <a class="persona" href="${id === 'business-owner' ? withAgent(`card/${id}/`) : `card/${id}/`}" aria-label="Show the ${p.label} QR presentation">
       <span class="icon" aria-hidden="true">${p.icon}</span>
-      <small>${p.number} · Persona BizCard</small>
+      <small>${p.number} · StepOut presentation</small>
       <h2>${p.label}</h2>
       <p>${p.outcome}</p>
       <strong>Show QR presentation →</strong>
@@ -207,7 +207,7 @@ function renderChooser() {
   qs("#app").innerHTML = `<div class="shell">
     <header class="topbar">${brand()}<div class="ownerline">Presented by Eddy Davila<br>Founder and owner · Bitter Softworks</div></header>
     <section class="hero">
-      <div><div class="eyebrow">In-person product presentation</div><h1>One app.<em>Three ways in.</em></h1><p class="lede">Choose who you are speaking with. The next screen becomes a focused digital business card with the right QR code, message, and benefits for that person.</p><div class="status">✓ Evidence-backed benefits · no inflated promises</div></div>
+      <div><div class="eyebrow">Built for the people who make connections</div><h1>StepOut.<em>Start a conversation.</em></h1><p class="lede">The agent workspace by What’s Out. Invite your team, present the right experience, and connect business customers with the agent who introduced them.</p><div class="card-tools" style="--accent:var(--cyan)"><a class="button primary" href="agent/">Agent sign-in</a><a class="button" href="owner/">Owner invitation desk</a></div></div>
       <div class="hero-art" role="img" aria-label="What’s Out nightlife welcome screen"></div>
     </section>
     <p class="menu-label">Choose the person in front of you</p>
@@ -314,7 +314,7 @@ function showToast(message) {
 }
 
 function renderNotFound() {
-  qs("#app").innerHTML = `<div class="shell"><h1>Page not found.</h1><a class="button primary" href="/whatsout-bizcard/">Return to the BizCard</a></div>`;
+  qs("#app").innerHTML = `<div class="shell"><h1>Page not found.</h1><a class="button primary" href="/whatsout-bizcard/">Return to StepOut</a></div>`;
 }
 
 const page = document.body.dataset.page;

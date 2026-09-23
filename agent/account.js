@@ -45,7 +45,7 @@ onAuthStateChanged(auth, async (user) => {
       const link = document.createElement('a');
       link.href = response.data.url;
       link.className = 'button primary';
-      link.textContent = 'Open my personal BizCard';
+      link.textContent = 'Open my personal StepOut card';
       document.querySelector('#result').append(link);
       status.textContent = 'Bookmark your personal card. Select Business Owner to display your attributed QR.';
     }

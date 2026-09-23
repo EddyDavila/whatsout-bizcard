@@ -1,4 +1,4 @@
-# What's Out Persona BizCard
+# StepOut — the agent workspace by What’s Out
 
 A mobile-first sales presentation for in-person What’s Out demonstrations. Choose a persona, show the matching QR card, and let the customer continue on their own phone.
 

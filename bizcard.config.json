@@ -1,5 +1,7 @@
 {
   "appName": "What's Out",
+  "workspaceName": "StepOut",
+  "workspaceTagline": "The agent workspace by What's Out",
   "publisher": "Bitter Softworks",
   "creator": "Eddy Davila",
   "publicBaseUrl": "https://eddydavila.github.io/whatsout-bizcard/",
