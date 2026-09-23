@@ -11,5 +11,6 @@ const all=document.createElement('a');all.href=new URL('help/',scriptBase).href;
 bar.append(link,all);
 if(!route.includes('/benefits/')&&!route.includes('/card/')&&new URLSearchParams(location.search).get('mode')!=='customer'){
  const training=document.createElement('a');training.href=new URL('training/',scriptBase).href;training.textContent='Agent welcome training';bar.append(training);
+ const sales=document.createElement('a');sales.href=new URL('sales/',scriptBase).href;sales.textContent='My Sales';bar.append(sales);
 }
 document.body.prepend(bar);
