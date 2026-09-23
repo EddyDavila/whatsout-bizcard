@@ -1,9 +1,11 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import '../help-link.js';
+import {protectApp,authError} from '../app-check.js';
 import {getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, setPersistence, browserSessionPersistence} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import {getFunctions, httpsCallable} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-functions.js';
 
 const app = initializeApp({apiKey:'AIzaSyCZMzP5MbhN4S5XqETm6C08kR7vXV6JZ7U',authDomain:'whatsout-fcc29.firebaseapp.com',projectId:'whatsout-fcc29',appId:'1:208246724865:web:b1e51a58667cac884de300'});
+protectApp(app);
 const auth = getAuth(app);
 const functions = getFunctions(app, 'us-central1');
 const params = new URLSearchParams(location.search);
@@ -22,7 +24,7 @@ login.addEventListener('submit', async (event) => {
   try {
     await signInWithEmailAndPassword(auth, document.querySelector('#email').value.trim(), document.querySelector('#password').value);
     document.querySelector('#password').value = '';
-  } catch (_) { status.textContent = 'Unable to sign in. Check your email and password, or use account recovery in What’s Out.'; }
+  } catch (error) { status.textContent = authError(error); }
 });
 document.querySelector('#logout').addEventListener('click', () => signOut(auth));
 onAuthStateChanged(auth, async (user) => {

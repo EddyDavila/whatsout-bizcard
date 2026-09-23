@@ -1,6 +1,7 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const sdk={
+  'firebase-app-check.js':'export const initializeAppCheck=()=>({}); export class ReCaptchaEnterpriseProvider {}',
   'firebase-app.js':'export const initializeApp=()=>({});',
   'firebase-auth.js':`const a={currentUser:window.testUser}; export const getAuth=()=>a; export const browserSessionPersistence={}; export const setPersistence=async()=>{}; export const onAuthStateChanged=(_,cb)=>{window.authCallback=cb;cb(a.currentUser);}; export const signOut=async()=>{a.currentUser=null;window.authCallback(null);}; export const signInWithEmailAndPassword=async()=>{}; export const sendPasswordResetEmail=async()=>{}; export const createUserWithEmailAndPassword=async()=>({user:a.currentUser}); export const sendEmailVerification=async()=>{}; export const reload=async()=>{}; export const getIdToken=async()=>'';`,
   'firebase-firestore.js':`export const getFirestore=()=>({});export const collection=()=>({});export const query=()=>({});export const orderBy=()=>({});export const limit=()=>({});export const getDocs=async()=>{if(window.testUser?.email!=='owner@example.com')throw Error('permission-denied');return {docs:[],size:0};};`,
