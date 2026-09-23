@@ -122,7 +122,7 @@ const PERSONAS = {
     destination: "https://eddydavila.github.io/whatsout-bizcard/benefits/business-owner/",
     qrAction: "Scan to see every owner benefit",
     quick: [
-      "Register or claim an approved business profile",
+      "Build an approved business profile; existing-listing claims remain unverified",
       "Create, publish, share, edit, and expire events",
       "Send VIP invitations with inbox and push delivery",
       "Scan admission QR codes and choose VIP or regular entry",
@@ -132,7 +132,7 @@ const PERSONAS = {
       {
         title: "Create a credible business presence",
         benefits: [
-          ["Register or claim your business", "Submit the business category, address, map location, hours, images, features, and verification documents for review."],
+          ["Build your business presence", "Submit business details for review. Connecting an authorized owner to an existing imported listing is the intended workflow; complete claim-and-verification support has not yet been verified."],
           ["Appear in discovery", "An approved, visible listing can participate in relevant map and category searches when it falls within the requested area."],
           ["Keep information current", "Use the owner dashboard to update business details, subject to the app’s approval rules."],
           ["Build trust", "Give customers one place to review available details, features, ratings, and events connected to the business."],
