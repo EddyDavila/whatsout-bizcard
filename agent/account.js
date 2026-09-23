@@ -42,6 +42,7 @@ onAuthStateChanged(auth, async (user) => {
       if (!/^[a-f0-9]{32}$/.test(code || '')) throw new Error('This referral link is invalid. Ask the agent to show their personal QR again.');
       const response = await httpsCallable(functions, 'claimBizCardReferral')({agentCode:code});
       status.textContent = `Referral saved: ${response.data.agentName}. Use ${user.email} when purchasing your business subscription on Android. Your subscription must be verified and reviewed before commission is eligible.`;
+      const next=document.createElement('a');next.className='button primary';next.href=`../get-app/?agent=${encodeURIComponent(code)}`;next.textContent='Next: get the app and complete business setup';document.querySelector('#result').append(next);
     } else {
       const response = await httpsCallable(functions, 'getSalesBizCard')({});
       const link = document.createElement('a');
