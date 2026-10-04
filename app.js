@@ -15,7 +15,7 @@ const PERSONAS = {
     number: "01",
     icon: "⌖",
     label: "Free User",
-    cardTitle: "Find what’s out.",
+    cardTitle: "Find your next outing.",
     outcome: "A fast way to discover nearby places and decide where to go next—without paying to begin.",
     qr: "../../assets/qr-free.png",
     destination: SITE.webApp,
