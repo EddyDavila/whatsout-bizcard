@@ -15,7 +15,7 @@ const status = document.querySelector('#status');
 const login = document.querySelector('#login');
 if (customer) {
   document.querySelector('#title').textContent = 'Save your referral';
-  document.querySelector('#intro').textContent = 'Connect your verified What’s Out account with the agent who introduced you. It will follow your account when you buy a business subscription on Android. User+ purchases are excluded.';
+  document.querySelector('#intro').textContent = 'Connect your verified StepOut account with the agent who introduced you. It will follow your account when you buy a business subscription on Android. User+ purchases are excluded.';
 }
 await setPersistence(auth, browserSessionPersistence);
 login.addEventListener('submit', async (event) => {
@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
   document.querySelector('#result').replaceChildren();
   if (!user) { status.textContent = ''; return; }
   if (!user.emailVerified) {
-    status.textContent = 'Verify your email in What’s Out, then sign out and sign back in here.';
+    status.textContent = 'Verify your email in StepOut, then sign out and sign back in here.';
     return;
   }
   status.textContent = customer ? 'Saving your business referral…' : 'Loading your personal card…';

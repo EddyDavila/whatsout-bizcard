@@ -45,7 +45,7 @@ document.querySelector('#invite-form').onsubmit=async(event)=>{
     const {data:result}=await call('createSalesInvite',data);
     // The secret stays in the URL fragment, not in HTTP request paths/referrers.
     const url=new URL('../join/',location.href);url.hash=new URLSearchParams({invite:result.inviteCode}).toString();
-    const text=`Hi ${data.fullName}, I’m inviting you to join the What’s Out sales team. Open this link, sign in or create an account using ${data.email}, verify your email, and accept within seven days.\n\n${url.href}\n\nEddy Davila · Bitter Softworks`;
+    const text=`Hi ${data.fullName}, I’m inviting you to join the StepOut sales team. Open this link, sign in or create an account using ${data.email}, verify your email, and accept within seven days.\n\n${url.href}\n\nEddy Davila · Bitter Softworks`;
     const inner=document.createElement('canvas');QrCreator.render({text:url.href,size:540,radius:0,ecLevel:'M',fill:'#050718',background:'#fff'},inner);
     const canvas=document.createElement('canvas');canvas.width=canvas.height=660;
     const ctx=canvas.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,660,660);ctx.drawImage(inner,60,60);
@@ -54,7 +54,7 @@ document.querySelector('#invite-form').onsubmit=async(event)=>{
     invitation={id:result.inviteCode.split('.')[0],url:url.href,text,file:new File([blob],'whatsout-agent-invitation.png',{type:'image/png'})};
     document.querySelector('#share-title').textContent=`Invitation for ${data.fullName}`;
     document.querySelector('#expires').textContent=`Expires ${new Date(result.expiresAt).toLocaleString()}`;
-    document.querySelector('#email-share').href=`mailto:${encodeURIComponent(data.email)}?subject=${encodeURIComponent('Your What’s Out sales invitation')}&body=${encodeURIComponent(text)}`;
+    document.querySelector('#email-share').href=`mailto:${encodeURIComponent(data.email)}?subject=${encodeURIComponent('Your StepOut sales invitation')}&body=${encodeURIComponent(text)}`;
     document.querySelector('#sms-share').href=`sms:${data.phone.replace(/[^+0-9]/g,'')}?body=${encodeURIComponent(text)}`;
     document.querySelector('#download').href=canvas.toDataURL('image/png');panel.hidden=false;
     message('Invitation created. Share it now; this private link is shown only in this session.');
@@ -66,8 +66,8 @@ document.querySelector('#copy').onclick=async()=>{if(invitation){await navigator
 document.querySelector('#share').onclick=async()=>{
   if(!invitation)return;
   try{
-    if(navigator.canShare?.({files:[invitation.file]}))await navigator.share({title:'What’s Out invitation',text:invitation.text,files:[invitation.file]});
-    else if(navigator.share)await navigator.share({title:'What’s Out invitation',text:invitation.text});
+    if(navigator.canShare?.({files:[invitation.file]}))await navigator.share({title:'StepOut invitation',text:invitation.text,files:[invitation.file]});
+    else if(navigator.share)await navigator.share({title:'StepOut invitation',text:invitation.text});
     else{await navigator.clipboard.writeText(invitation.text);message('Invitation copied. Paste it into email or messages, or download the QR.');}
   }catch(error){if(error.name!=='AbortError')message('Sharing was unavailable. Use Email link, Text link, or Download QR.');}
 };

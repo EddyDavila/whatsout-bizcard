@@ -34,7 +34,7 @@ const PERSONAS = {
           ["Location-first discovery", "Open a map around your physical location and search without first knowing a business name."],
           ["Search by category", "Look for restaurants, bars, hotels, venues, pharmacies, hospitals, liquor stores, and tourist spots within the standard 5 km search area."],
           ["Expand the search", "Use the rewarded option to expand an eligible nearby category search from 5 km to 10 km."],
-          ["Closest-party prompt", "After nearby results load, What’s Out can highlight the closest loaded place and show its distance in miles."],
+          ["Closest-party prompt", "After nearby results load, StepOut can highlight the closest loaded place and show its distance in miles."],
           ["Plan by date", "Event Mode lets you choose a date before looking for relevant activity."],
           ["Useful place details", "Open loaded markers to review available business details, features, ratings, and directions-related actions."],
         ],
@@ -73,7 +73,7 @@ const PERSONAS = {
       "Profiles, posts, reactions, Lounge, and VIP invitations",
       "Unlimited remote radio and fewer advertising gates",
     ],
-    cta: "Open What’s Out",
+    cta: "Open StepOut",
     sections: [
       {
         title: "Discover beyond your current location",
@@ -87,7 +87,7 @@ const PERSONAS = {
       {
         title: "Join the community",
         benefits: [
-          ["Public profile and posts", "Create a member presence and share posts inside the What’s Out community."],
+          ["Public profile and posts", "Create a member presence and share posts inside the StepOut community."],
           ["Likes and comments", "Respond to community content instead of only browsing it."],
           ["Radio Lounge", "Enter the member Lounge and participate in its chat experience."],
           ["VIP invitations", "Eligible invitations arrive in the private in-app inbox and can also trigger a push notification."],
@@ -127,7 +127,7 @@ const PERSONAS = {
       "Send VIP invitations with inbox and push delivery",
       "Scan admission QR codes and choose VIP or regular entry",
     ],
-    cta: "Open What’s Out",
+    cta: "Open StepOut",
     sections: [
       {
         title: "Create a credible business presence",
@@ -171,7 +171,7 @@ const PERSONAS = {
       "A business listing requires truthful information and approval; submission does not guarantee acceptance.",
       "Publishing an event requires a valid plan, pass, or supported verified credit at the time of publication.",
       "Search visibility depends on approval status, location, category, selected date, current data, and service availability.",
-      "What’s Out provides discovery and operating tools; it does not guarantee attendance, revenue, or sales.",
+      "StepOut provides discovery and operating tools; it does not guarantee attendance, revenue, or sales.",
       "Plans and prices shown in Google Play can vary by country, tax, currency, and current product configuration.",
     ],
   },
@@ -187,11 +187,11 @@ const withAgent = (url) => {
 };
 
 function brand(relative = "") {
-  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="What’s Out icon"><span><b>StepOut</b><span>The agent workspace by What’s Out</span></span></a>`;
+  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="StepOut icon"><span><b>StepOut</b><span>The StepOut agent workspace</span></span></a>`;
 }
 
 function footer() {
-  return `<footer class="footer"><span>StepOut by What’s Out · © 2026 ${SITE.publisher}. Created by ${SITE.creator}.</span><span>Benefits audited ${SITE.verified}.</span></footer>`;
+  return `<footer class="footer"><span>StepOut Agents by Bitter Softworks · © 2026 ${SITE.publisher}. Created by ${SITE.creator}.</span><span>Benefits audited ${SITE.verified}.</span></footer>`;
 }
 
 function renderChooser() {
@@ -207,8 +207,8 @@ function renderChooser() {
   qs("#app").innerHTML = `<div class="shell">
     <header class="topbar">${brand()}<div class="ownerline">Presented by Eddy Davila<br>Founder and owner · Bitter Softworks</div></header>
     <section class="hero">
-      <div><div class="eyebrow">Built for the people who make connections</div><h1>StepOut.<em>Start a conversation.</em></h1><p class="lede">The agent workspace by What’s Out. Invite your team, present the right experience, and connect business customers with the agent who introduced them.</p><div class="card-tools" style="--accent:var(--cyan)"><a class="button primary" href="agent/">Agent sign-in</a><a class="button" href="owner/">Owner invitation desk</a></div></div>
-      <div class="hero-art" role="img" aria-label="What’s Out nightlife welcome screen"></div>
+      <div><div class="eyebrow">Built for the people who make connections</div><h1>StepOut.<em>Start a conversation.</em></h1><p class="lede">The StepOut agent workspace. Invite your team, present the right experience, and connect business customers with the agent who introduced them.</p><div class="card-tools" style="--accent:var(--cyan)"><a class="button primary" href="agent/">Agent sign-in</a><a class="button" href="owner/">Owner invitation desk</a></div></div>
+      <div class="hero-art" role="img" aria-label="StepOut nightlife welcome screen"></div>
     </section>
     <p class="menu-label">Choose the person in front of you</p>
     <nav class="persona-grid" aria-label="Choose a customer persona">${cards}</nav>
@@ -225,7 +225,7 @@ function renderCard(id) {
     <a class="back" href="${withAgent('../../')}">← Choose another persona</a>
     <article class="sales-card">
       <section>
-        <div class="eyebrow">${p.number} · What’s Out for</div>
+        <div class="eyebrow">${p.number} · StepOut for</div>
         <h1><span>${p.label}</span>${p.cardTitle}</h1>
         <p class="pitch">${p.outcome}</p>
         <ul class="quick-benefits">${p.quick.map((item) => `<li>${item}</li>`).join("")}</ul>
@@ -274,18 +274,18 @@ function renderBenefits(id) {
     </section>`).join("");
 
   qs("#app").innerHTML = `<div class="benefit-shell" style="--accent:${p.accent}">
-    <header class="topbar"><a class="back" href="${id === 'business-owner' ? withAgent(`../../card/${id}/`) : `../../card/${id}/`}">← Back to QR card</a><div class="ownerline">What’s Out · ${p.label}</div></header>
+    <header class="topbar"><a class="back" href="${id === 'business-owner' ? withAgent(`../../card/${id}/`) : `../../card/${id}/`}">← Back to QR card</a><div class="ownerline">StepOut · ${p.label}</div></header>
     <section class="benefit-hero">
       <div class="eyebrow">A complete, evidence-backed view</div>
       <h1>What <span class="label">${p.label}</span> gets</h1>
       <p class="lede">${p.outcome}</p>
-      <div class="hero-actions"><a class="button primary" href="${SITE.webApp}" target="_blank" rel="noopener">${p.cta}</a><a class="button" href="mailto:${SITE.email}?subject=What%27s%20Out%20${encodeURIComponent(p.label)}">Ask Bitter Softworks</a></div>
+      <div class="hero-actions"><a class="button primary" href="${SITE.webApp}" target="_blank" rel="noopener">${p.cta}</a><a class="button" href="mailto:${SITE.email}?subject=StepOut%20${encodeURIComponent(p.label)}">Ask Bitter Softworks</a></div>
     </section>
-    ${id === 'business-owner' && validAgentCode ? `<section class="notes"><h2>Keep your agent connected</h2><p>Sign in with your What’s Out account to save this business referral. Use that same account for your business subscription on Android. Scanning alone does not save it. Your original saved agent remains attached; this applies only to business subscriptions.</p><a class="button primary" href="${withAgent('../../agent/?mode=customer')}">Save my business referral</a></section>` : ''}
-    ${id === 'business-owner' ? `<section class="notes"><h2>Get the app and finish your setup</h2><p>Install What’s Out on Android, save your agent referral, and use the same account for your business subscription. Payment happens inside the app—not on this page.</p><a class="button primary" href="${withAgent('../../get-app/')}">Get the app · next steps</a></section>` : ''}
+    ${id === 'business-owner' && validAgentCode ? `<section class="notes"><h2>Keep your agent connected</h2><p>Sign in with your StepOut account to save this business referral. Use that same account for your business subscription on Android. Scanning alone does not save it. Your original saved agent remains attached; this applies only to business subscriptions.</p><a class="button primary" href="${withAgent('../../agent/?mode=customer')}">Save my business referral</a></section>` : ''}
+    ${id === 'business-owner' ? `<section class="notes"><h2>Get the app and finish your setup</h2><p>Install StepOut on Android, save your agent referral, and use the same account for your business subscription. Payment happens inside the app—not on this page.</p><a class="button primary" href="${withAgent('../../get-app/')}">Get the app · next steps</a></section>` : ''}
     ${sections}
     <aside class="notes"><h2>Clear expectations</h2><ul>${p.notes.map((note) => `<li>${note}</li>`).join("")}</ul></aside>
-    <section class="contact"><h2>Ready to talk?</h2><p>Contact Eddy Davila, founder and owner of Bitter Softworks, for a What’s Out walkthrough.</p><p><a href="mailto:${SITE.email}">${SITE.email}</a> · <a href="tel:${SITE.phoneHref}">${SITE.phoneDisplay}</a></p></section>
+    <section class="contact"><h2>Ready to talk?</h2><p>Contact Eddy Davila, founder and owner of Bitter Softworks, for a StepOut walkthrough.</p><p><a href="mailto:${SITE.email}">${SITE.email}</a> · <a href="tel:${SITE.phoneHref}">${SITE.phoneDisplay}</a></p></section>
     ${footer()}
   </div>`;
 }

@@ -1,11 +1,11 @@
-# StepOut — the agent workspace by What’s Out
+# StepOut — the StepOut agent workspace
 
-A mobile-first sales presentation for in-person What’s Out demonstrations. Choose a persona, show the matching QR card, and let the customer continue on their own phone.
+A mobile-first sales presentation for in-person StepOut demonstrations. Choose a persona, show the matching QR card, and let the customer continue on their own phone.
 
 ## Persona routes
 
 - **Free User:** opens the live free web experience at `https://whatsout-fcc29.web.app/`.
-- **User+:** opens a focused benefits page before continuing to What’s Out.
+- **User+:** opens a focused benefits page before continuing to StepOut.
 - **Business Owner:** opens the business presentation covering listings, events, VIP invitations, and admission tools.
 
 ## Evidence and expectations
@@ -30,9 +30,9 @@ Created for Eddy Davila and Bitter Softworks.
 
 ## Agent attribution
 
-Agents sign in at `/agent/` with their existing verified, active What’s Out sales account. The server returns a permanent opaque personal link. Its Business Owner card renders a QR that carries that link; Free and User+ cards do not carry commission attribution.
+Agents sign in at `/agent/` with their existing verified, active StepOut sales account. The server returns a permanent opaque personal link. Its Business Owner card renders a QR that carries that link; Free and User+ cards do not carry commission attribution.
 
-The customer selects **Save my business referral**, signs in with a verified What’s Out account, and waits for the saved confirmation. New customers first create/verify their account in What’s Out, then return to this page. The referral is stored on the server for that account and is available when the same account purchases on Android. A scan alone does not save attribution. The first saved agent remains attached. A referral cannot be reused for a different business once assigned.
+The customer selects **Save my business referral**, signs in with a verified StepOut account, and waits for the saved confirmation. New customers first create/verify their account in StepOut, then return to this page. The referral is stored on the server for that account and is available when the same account purchases on Android. A scan alone does not save attribution. The first saved agent remains attached. A referral cannot be reused for a different business once assigned.
 
 Only Google-verified business subscriptions qualify. User+, event passes, advertisements, and songs are excluded. Existing administrator review and commission amounts remain unchanged. No automatic commission payout is introduced.
 
