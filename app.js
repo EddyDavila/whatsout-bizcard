@@ -187,7 +187,7 @@ const withAgent = (url) => {
 };
 
 function brand(relative = "") {
-  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png" alt="StepOut icon"><span><b>StepOut</b><span>The StepOut agent workspace</span></span></a>`;
+  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/icon.png?v=20261004" alt="StepOut icon"><span><b>StepOut</b><span>The StepOut agent workspace</span></span></a>`;
 }
 
 function footer() {
