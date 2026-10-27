@@ -187,7 +187,7 @@ const withAgent = (url) => {
 };
 
 function brand(relative = "") {
-  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/outcalled-icon.svg?v=20261026" alt="OutCalled icon"><span><b>OutCalled</b><span>The OutCalled agent workspace</span></span></a>`;
+  return `<a class="brand" href="${relative || "./"}"><img src="${relative}assets/outcalled-icon.svg?v=20261026-categories" alt="OutCalled icon"><span><b>OutCalled</b><span>The OutCalled agent workspace</span></span></a>`;
 }
 
 function footer() {
