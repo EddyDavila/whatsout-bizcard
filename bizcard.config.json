@@ -1,7 +1,7 @@
 {
-  "appName": "StepOut",
-  "workspaceName": "StepOut",
-  "workspaceTagline": "The StepOut agent workspace",
+  "appName": "OutCalled",
+  "workspaceName": "OutCalled",
+  "workspaceTagline": "The OutCalled agent workspace",
   "publisher": "Bitter Softworks",
   "creator": "Eddy Davila",
   "publicBaseUrl": "https://eddydavila.github.io/whatsout-bizcard/",

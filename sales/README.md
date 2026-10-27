@@ -1,4 +1,4 @@
-# StepOut shared sales dashboard
+# OutCalled shared sales dashboard
 
 Reads the same `sales_leads` collection as Android's SalesTeamScreen. Uses the existing Firebase Auth session and App Check. No duplicate database, new payment processor, write endpoint, or commission calculation is introduced.
 
