@@ -1,8 +1,6 @@
 const SITE = {
   webApp: "https://whatsout-fcc29.web.app/",
   email: "bittersoftworks@gmail.com",
-  phoneDisplay: "201-491-8531",
-  phoneHref: "+12014918531",
   publisher: "Bitter Softworks",
   creator: "Eddy Davila",
   verified: "September 22, 2026",
@@ -285,7 +283,7 @@ function renderBenefits(id) {
     ${id === 'business-owner' ? `<section class="notes"><h2>Get the app and finish your setup</h2><p>Install OutCalled on Android, save your agent referral, and use the same account for your business subscription. Payment happens inside the app—not on this page.</p><a class="button primary" href="${withAgent('../../get-app/')}">Get the app · next steps</a></section>` : ''}
     ${sections}
     <aside class="notes"><h2>Clear expectations</h2><ul>${p.notes.map((note) => `<li>${note}</li>`).join("")}</ul></aside>
-    <section class="contact"><h2>Ready to talk?</h2><p>Contact Eddy Davila, founder and owner of Bitter Softworks, for a OutCalled walkthrough.</p><p><a href="mailto:${SITE.email}">${SITE.email}</a> · <a href="tel:${SITE.phoneHref}">${SITE.phoneDisplay}</a></p></section>
+    <section class="contact"><h2>Ready to talk?</h2><p>Contact Eddy Davila, founder and owner of Bitter Softworks, for a OutCalled walkthrough.</p><p><a href="mailto:${SITE.email}">${SITE.email}</a> · <a href="https://bittersoftworks-support.web.app/">Customer service</a></p></section>
     ${footer()}
   </div>`;
 }
